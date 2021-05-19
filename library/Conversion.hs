@@ -1,18 +1,18 @@
 {-# LANGUAGE IncoherentInstances #-}
 module Conversion
 (
-  Conversion(..), 
-  convert1, 
+  Conversion(..),
+  convert1,
   convert2,
-) 
+)
 where
 
 import BasePrelude
 
 
 -- |
--- A type-class, 
--- which provides a non-partial conversion function from a value of type @a@ 
+-- A type-class,
+-- which provides a non-partial conversion function from a value of type @a@
 -- to a value of type @b@.
 class Conversion a b where
   convert :: a -> b
@@ -56,9 +56,9 @@ instance Conversion (Maybe a) Bool where
   convert = maybe False (const True)
 
 -- |
--- Converts into a function, which extracts the value, 
+-- Converts into a function, which extracts the value,
 -- given a default value in the 'Nothing' case.
--- 
+--
 -- Equivalent to 'fromMaybe'.
 instance Conversion (Maybe a) (a -> a) where
   {-# INLINE convert #-}
@@ -83,43 +83,43 @@ instance Conversion [Maybe a] [a] where
   convert = catMaybes
 
 
-instance Conversion Int Integer where 
+instance Conversion Int Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int (f Int8) where 
+instance Alternative f => Conversion Int (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Int16) where 
+instance Alternative f => Conversion Int (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Int32) where 
+instance Alternative f => Conversion Int (f Int32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Conversion Int Int64 where 
+instance Conversion Int Int64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int (f Word) where 
+instance Alternative f => Conversion Int (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Word8) where 
+instance Alternative f => Conversion Int (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Word16) where 
+instance Alternative f => Conversion Int (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Word32) where 
+instance Alternative f => Conversion Int (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int (f Word64) where 
+instance Alternative f => Conversion Int (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
@@ -128,367 +128,367 @@ instance Conversion Int8 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int8 Int where 
+instance Conversion Int8 Int where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int8 Int16 where 
+instance Conversion Int8 Int16 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int8 Int32 where 
+instance Conversion Int8 Int32 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int8 Int64 where 
+instance Conversion Int8 Int64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int8 (f Word) where 
+instance Alternative f => Conversion Int8 (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int8 (f Word8) where 
+instance Alternative f => Conversion Int8 (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int8 (f Word16) where 
+instance Alternative f => Conversion Int8 (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int8 (f Word32) where 
+instance Alternative f => Conversion Int8 (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int8 (f Word64) where 
+instance Alternative f => Conversion Int8 (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
 
-instance Conversion Int16 Integer where 
+instance Conversion Int16 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int16 Int where 
+instance Conversion Int16 Int where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int16 (f Int8) where 
+instance Alternative f => Conversion Int16 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Conversion Int16 Int32 where 
+instance Conversion Int16 Int32 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int16 Int64 where 
+instance Conversion Int16 Int64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int16 (f Word) where 
+instance Alternative f => Conversion Int16 (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int16 (f Word8) where 
+instance Alternative f => Conversion Int16 (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int16 (f Word16) where 
+instance Alternative f => Conversion Int16 (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int16 (f Word32) where 
+instance Alternative f => Conversion Int16 (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int16 (f Word64) where 
+instance Alternative f => Conversion Int16 (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
 
-instance Conversion Int32 Integer where 
+instance Conversion Int32 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Int32 Int where 
+instance Conversion Int32 Int where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int32 (f Int8) where 
+instance Alternative f => Conversion Int32 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int32 (f Int16) where 
+instance Alternative f => Conversion Int32 (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Conversion Int32 Int64 where 
+instance Conversion Int32 Int64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int32 (f Word) where 
+instance Alternative f => Conversion Int32 (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int32 (f Word8) where 
+instance Alternative f => Conversion Int32 (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int32 (f Word16) where 
+instance Alternative f => Conversion Int32 (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int32 (f Word32) where 
+instance Alternative f => Conversion Int32 (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int32 (f Word64) where 
+instance Alternative f => Conversion Int32 (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
 
-instance Conversion Int64 Integer where 
+instance Conversion Int64 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Int64 (f Int) where 
+instance Alternative f => Conversion Int64 (f Int) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Int8) where 
+instance Alternative f => Conversion Int64 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Int16) where 
+instance Alternative f => Conversion Int64 (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Int32) where 
+instance Alternative f => Conversion Int64 (f Int32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Word) where 
+instance Alternative f => Conversion Int64 (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Word8) where 
+instance Alternative f => Conversion Int64 (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Word16) where 
+instance Alternative f => Conversion Int64 (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Word32) where 
+instance Alternative f => Conversion Int64 (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Int64 (f Word64) where 
+instance Alternative f => Conversion Int64 (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
 
-instance Conversion Word Integer where 
+instance Conversion Word Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Word (f Int) where 
+instance Alternative f => Conversion Word (f Int) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Int8) where 
+instance Alternative f => Conversion Word (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Int16) where 
+instance Alternative f => Conversion Word (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Int32) where 
+instance Alternative f => Conversion Word (f Int32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Int64) where 
+instance Alternative f => Conversion Word (f Int64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Word8) where 
+instance Alternative f => Conversion Word (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Word16) where 
+instance Alternative f => Conversion Word (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word (f Word32) where 
+instance Alternative f => Conversion Word (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Conversion Word Word64 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-
-instance Conversion Word8 Integer where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Int where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Alternative f => Conversion Word8 (f Int8) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Conversion Word8 Int16 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Int32 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Int64 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Word where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Word16 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Word32 where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Conversion Word8 Word64 where 
+instance Conversion Word Word64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
 
-instance Conversion Word16 Integer where 
+instance Conversion Word8 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Word16 Int where 
+instance Conversion Word8 Int where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Word16 (f Int8) where 
+instance Alternative f => Conversion Word8 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word16 (f Int16) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Conversion Word16 Int32 where 
+instance Conversion Word8 Int16 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Word16 Int64 where 
+instance Conversion Word8 Int32 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Word16 (f Word) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Alternative f => Conversion Word16 (f Word8) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Conversion Word16 Word32 where 
+instance Conversion Word8 Int64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Word16 Word64 where 
+instance Conversion Word8 Word where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-
-instance Conversion Word32 Integer where 
+instance Conversion Word8 Word16 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Word32 (f Int) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Alternative f => Conversion Word32 (f Int8) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Alternative f => Conversion Word32 (f Int16) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Alternative f => Conversion Word32 (f Int32) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Conversion Word32 Int64 where 
+instance Conversion Word8 Word32 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Conversion Word32 Word where 
-  {-# INLINE convert #-}
-  convert = fromIntegral
-
-instance Alternative f => Conversion Word32 (f Word8) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Alternative f => Conversion Word32 (f Word16) where 
-  {-# INLINE convert #-}
-  convert = checkedFromIntegral
-
-instance Conversion Word32 Word64 where 
+instance Conversion Word8 Word64 where
   {-# INLINE convert #-}
   convert = fromIntegral
 
 
-instance Conversion Word64 Integer where 
+instance Conversion Word16 Integer where
   {-# INLINE convert #-}
   convert = fromIntegral
 
-instance Alternative f => Conversion Word64 (f Int) where 
+instance Conversion Word16 Int where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Alternative f => Conversion Word16 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Int8) where 
+instance Alternative f => Conversion Word16 (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Int16) where 
+instance Conversion Word16 Int32 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Conversion Word16 Int64 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Alternative f => Conversion Word16 (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Int32) where 
+instance Alternative f => Conversion Word16 (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Int64) where 
+instance Conversion Word16 Word32 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Conversion Word16 Word64 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+
+instance Conversion Word32 Integer where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Alternative f => Conversion Word32 (f Int) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Word) where 
+instance Alternative f => Conversion Word32 (f Int8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Word8) where 
+instance Alternative f => Conversion Word32 (f Int16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Word16) where 
+instance Alternative f => Conversion Word32 (f Int32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Word64 (f Word32) where 
+instance Conversion Word32 Int64 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Conversion Word32 Word where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Alternative f => Conversion Word32 (f Word8) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word32 (f Word16) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Conversion Word32 Word64 where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+
+instance Conversion Word64 Integer where
+  {-# INLINE convert #-}
+  convert = fromIntegral
+
+instance Alternative f => Conversion Word64 (f Int) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Int8) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Int16) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Int32) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Int64) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Word) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Word8) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Word16) where
+  {-# INLINE convert #-}
+  convert = checkedFromIntegral
+
+instance Alternative f => Conversion Word64 (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
@@ -513,23 +513,23 @@ instance Alternative f => Conversion Integer (f Int64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Integer (f Word) where 
+instance Alternative f => Conversion Integer (f Word) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Integer (f Word8) where 
+instance Alternative f => Conversion Integer (f Word8) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Integer (f Word16) where 
+instance Alternative f => Conversion Integer (f Word16) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Integer (f Word32) where 
+instance Alternative f => Conversion Integer (f Word32) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
-instance Alternative f => Conversion Integer (f Word64) where 
+instance Alternative f => Conversion Integer (f Word64) where
   {-# INLINE convert #-}
   convert = checkedFromIntegral
 
@@ -562,12 +562,16 @@ checkedFromIntegral =
 -- A utility, which helps the compiler resolve the type in case of conversion of types of kind @* -> *@.
 {-# INLINE convert1 #-}
 convert1 :: Conversion (a x) (b x) => a x -> b x
-convert1 = 
+convert1 =
   convert
 
 -- |
 -- A utility, which helps the compiler resolve the type in case of conversion of types of kind @* -> * -> *@.
 {-# INLINE convert2 #-}
 convert2 :: Conversion (a x1 x2) (b x1 x2) => a x1 x2 -> b x1 x2
-convert2 = 
+convert2 =
   convert
+
+instance (Functor f, Conversion a b) => Conversion (f a) (f b) where
+  {-# INLINE convert #-}
+  convert = fmap convert
