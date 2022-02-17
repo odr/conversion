@@ -1,4 +1,3 @@
-{-# LANGUAGE IncoherentInstances #-}
 module Conversion
 (
   Conversion(..),
@@ -548,11 +547,6 @@ instance Conversion Double Rational where
   convert = realToFrac
 
 
-{-# INLINABLE isomorphicallyChecked #-}
-isomorphicallyChecked :: (Alternative f, Conversion b a, Eq a) => (a -> b) -> a -> f b
-isomorphicallyChecked =
-  \f a -> f a & \b -> if a == convert b then pure b else empty
-
 {-# INLINABLE checkedFromIntegral #-}
 checkedFromIntegral :: (Alternative f, Integral a, Integral b) => a -> f b
 checkedFromIntegral =
@@ -580,3 +574,6 @@ instance {-# OVERLAPPABLE #-} (Applicative f, Conversion a b)
   => Conversion a (f b) where
   {-# INLINE convert #-}
   convert = pure . convert
+
+instance {-# OVERLAPPABLE #-} (Coercible a b) => Conversion a b where
+  convert = coerce
