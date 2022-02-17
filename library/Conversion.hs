@@ -575,3 +575,8 @@ convert2 =
 instance (Functor f, Conversion a b) => Conversion (f a) (f b) where
   {-# INLINE convert #-}
   convert = fmap convert
+
+instance {-# OVERLAPPABLE #-} (Applicative f, Conversion a b)
+  => Conversion a (f b) where
+  {-# INLINE convert #-}
+  convert = pure . convert
