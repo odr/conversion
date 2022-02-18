@@ -16,10 +16,9 @@ import BasePrelude
 -- to a value of type @b@.
 class Conversion a b where
   convert :: a -> b
-
-instance Coercible a b => Conversion a b where
-  {-# INLINE convert #-}
+  default convert :: Coercible a b => a -> b
   convert = coerce
+
 
 -- |
 -- Equivalent to 'id'.
