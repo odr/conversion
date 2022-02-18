@@ -1,3 +1,4 @@
+{-# LANGUAGE IncoherentInstances #-}
 module Conversion
 (
   Conversion(..),
