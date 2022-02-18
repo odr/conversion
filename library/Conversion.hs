@@ -15,6 +15,8 @@ import BasePrelude
 -- to a value of type @b@.
 class Conversion a b where
   convert :: a -> b
+  default convert :: Coercible a b => a -> b
+  convert = coerce
 
 
 -- |
@@ -574,6 +576,3 @@ instance {-# OVERLAPPABLE #-} (Applicative f, Conversion a b)
   => Conversion a (f b) where
   {-# INLINE convert #-}
   convert = pure . convert
-
-instance {-# OVERLAPPABLE #-} (Coercible a b) => Conversion a b where
-  convert = coerce
